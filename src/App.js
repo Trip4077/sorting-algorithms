@@ -26,8 +26,11 @@ class App extends React.Component {
     return arr;
   }
 
-  setArrayLength = () => {
-    this.setState({ arrayLength: 20, array: this.randomize(20) });
+  setArrayLength = event => {
+    this.setState({ 
+      arrayLength: event.target.value, 
+      array: this.randomize(event.target.value) 
+    });
   }
 
   setArrayValues = () => {
