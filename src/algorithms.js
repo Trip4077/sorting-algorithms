@@ -1,5 +1,3 @@
-import { EFAULT } from "constants";
-
 const Aglorithms = {
     merge: array => {
         return merge(array);
@@ -20,8 +18,21 @@ const Aglorithms = {
         return arr;
     },
 
-    bubble: arr => {
+    bubble: array => {
         console.log('bubble')
+
+        for(let i = 0; i < array.length; i++ ) {
+            for(let j = 0; j < array.length - i - 1; j++) {
+                if(array[j] > array[j + 1]) {
+                    let temp = array[j];
+
+                    array[j] = array[j+1];
+                    array[j+1] = temp;
+                }
+            }
+        }
+
+        return array;
     },
 
     quick: arr => {
