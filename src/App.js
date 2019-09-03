@@ -2,13 +2,16 @@ import React from 'react';
 
 import Header from './components/Header';
 import ControlPanel from './components/ControlPanel';
+import Graph from './components/Graph';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      algorithm: 'merge'
+      algorithm: 'merge',
+      array: [],
+      arrayLength: 10,
     }
   }
 
@@ -17,7 +20,8 @@ class App extends React.Component {
       <div className="App">
         Hello World
         <Header />
-        <ControlPanel algorithm={this.state.algorithm} />
+        <ControlPanel config={this.state} />
+        <Graph />
       </div>
     );
   }
