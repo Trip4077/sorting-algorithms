@@ -1,11 +1,24 @@
 import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      Hello World
-    </div>
-  );
+import Header from './components/Header';
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      algorithm: 'merge'
+    }
+  }
+
+  render() {
+    return (
+      <div className="App">
+        Hello World
+        <Header />
+      </div>
+    );
+  }
 }
 
 export default App;
