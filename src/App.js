@@ -26,6 +26,10 @@ class App extends React.Component {
     return arr;
   }
 
+  setAlgorithm = event => {
+    this.setState({ algorithm: event.target.value })
+  }
+
   setArrayLength = event => {
     this.setState({ 
       arrayLength: event.target.value, 
@@ -49,6 +53,7 @@ class App extends React.Component {
         <ControlPanel config={this.state} 
                       setArrayValues={this.setArrayValues}
                       setArrayLength={this.setArrayLength}
+                      setAlgorithm={this.setAlgorithm}
         />
         <Graph />
       </div>

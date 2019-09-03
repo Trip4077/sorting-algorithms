@@ -5,6 +5,18 @@ const ControlPanel = props => {
         <div>
             Control Panel
             <p>{props.config.algorithm}</p>
+            <div className="input-field col s12">
+                <select onChange={props.setAlgorithm}>
+                    <option defaultValue disabled>Choose your option</option>
+                    <option value="merge">Merge Sort</option>
+                    <option value="bubble">Bubble Sort</option>
+                    <option value="quick">Quick Sort</option>
+                    <option value="insertion">Insertion Sort</option>
+                </select>
+                <label>Sorting Algorithm Select</label>
+            </div>
+
+
             <p>{`${props.config.array}`}</p>
 
             <div className="input-field col s12">
