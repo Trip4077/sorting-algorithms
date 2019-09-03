@@ -37,8 +37,15 @@ const ControlPanel = props => {
             </div>
 
             <a className="waves-effect waves-light btn"
-               onClick={props.setArrayValues}>
+               onClick={props.setArrayValues}
+               href='#'>
                 Randomize Array
+            </a>
+
+            <a className="waves-effect waves-light btn"
+               onClick={props.sortArray}
+               href='#'>
+                Sort Array
             </a>
         </div>
     )

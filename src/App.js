@@ -4,6 +4,8 @@ import Header from './components/Header';
 import ControlPanel from './components/ControlPanel';
 import Graph from './components/Graph';
 
+import Algorithms from './algorithms';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -19,8 +21,9 @@ class App extends React.Component {
     const arr = [];
 
     for(let i = 0; i < length; i++) {
-        arr.push((Math.random() * 100)
-                     .toFixed(0));
+        const number = (Math.random() * 100).toFixed(0);
+
+        arr.push(Number(number));
     }
 
     return arr;
@@ -41,6 +44,12 @@ class App extends React.Component {
     this.setState({ array: this.randomize(this.state.arrayLength) })
   }
 
+  sortArray = () => {
+    const array = Algorithms[this.state.algorithm](this.state.array);
+
+    this.setState({ array });
+  }
+
   componentDidMount() {
     this.setArrayValues();
   }
@@ -48,12 +57,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        Hello World
         <Header />
         <ControlPanel config={this.state} 
                       setArrayValues={this.setArrayValues}
                       setArrayLength={this.setArrayLength}
                       setAlgorithm={this.setAlgorithm}
+                      sortArray={this.sortArray}
         />
         <Graph />
       </div>
