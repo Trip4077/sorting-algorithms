@@ -1,3 +1,5 @@
+import { isGenericTypeAnnotation } from "@babel/types";
+
 const Aglorithms = {
     merge: array => {
         return merge(array);
@@ -35,10 +37,18 @@ const Aglorithms = {
         return array;
     },
 
-    quick: arr => {
+    quick: array => {
         console.log('quick');
+
+        return quickSort(array, 0, array.length-1);
     }
 }
+
+/*
+
+    Merge Sort Exterior functions
+
+*/
 
 const mergeParts = (left, right) => {
     const result = [];
@@ -69,6 +79,53 @@ const merge = array => {
     const right = array.slice(middle, array.length);
 
     return mergeParts(merge(left), merge(right));
+}
+
+/*
+
+    Quick Sort Exterior functions
+
+*/
+
+const swap = (array, leftIndex, rightIndex) => {
+    const temp = array[leftIndex];
+    array[leftIndex] = array[rightIndex];
+    array[rightIndex] = temp;
+}
+
+const partition = (array, left, right) => {
+    let pivot = array[Math.floor((right + left) / 2)];
+
+    while(left <= right) {
+        while(array[left] < pivot) {
+            left++;
+        }
+        while(array[right] > pivot) {
+            right--;
+        }
+
+        if(left <= right) {
+            swap(array, left, right);
+            left++;
+            right--;
+        }
+    }
+
+    return left;
+}
+
+const quickSort = (array, left, right) => {
+    let index;
+
+    if(array.length > 1) {
+        index = partition(array, left, right);
+
+        if(left < index - 1) quickSort(array, left, index - 1);
+
+        if(index < right) quickSort(array, index, right);
+    }
+
+    return array;
 }
 
 export default Aglorithms;
