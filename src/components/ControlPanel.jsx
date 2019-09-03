@@ -7,6 +7,9 @@ const ControlPanel = props => {
             <p>{props.config.algorithm}</p>
             <p>{`${props.config.array}`}</p>
             <p>{props.config.arrayLength}</p>
+
+            <button onClick={props.setArrayValues}> Random</button>
+            <button onClick={props.setArrayLength}> Length</button>
         </div>
     )
 }

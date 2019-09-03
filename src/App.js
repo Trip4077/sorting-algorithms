@@ -19,21 +19,23 @@ class App extends React.Component {
     const arr = [];
 
     for(let i = 0; i < length; i++) {
-        arr.push((Math.random()
-                     * 100)
+        arr.push((Math.random() * 100)
                      .toFixed(0));
     }
 
     return arr;
-  } 
+  }
+
+  setArrayLength = () => {
+    this.setState({ arrayLength: 20, array: this.randomize(20) });
+  }
+
+  setArrayValues = () => {
+    this.setState({ array: this.randomize(this.state.arrayLength) })
+  }
 
   componentDidMount() {
-    this.setState(prevState => {
-      return {
-        ...this.state,
-        array: this.randomize(prevState.arrayLength)
-      }
-    })
+    this.setArrayValues();
   }
 
   render() {
@@ -41,7 +43,10 @@ class App extends React.Component {
       <div className="App">
         Hello World
         <Header />
-        <ControlPanel config={this.state} />
+        <ControlPanel config={this.state} 
+                      setArrayValues={this.setArrayValues}
+                      setArrayLength={this.setArrayLength}
+        />
         <Graph />
       </div>
     );
