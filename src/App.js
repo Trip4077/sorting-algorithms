@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Header from './components/Header';
+import ControlPanel from './components/ControlPanel';
 
 class App extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class App extends React.Component {
       <div className="App">
         Hello World
         <Header />
+        <ControlPanel algorithm={this.state.algorithm} />
       </div>
     );
   }
