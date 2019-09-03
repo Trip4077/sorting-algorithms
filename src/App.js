@@ -15,6 +15,27 @@ class App extends React.Component {
     }
   }
 
+  randomize = length => {
+    const arr = [];
+
+    for(let i = 0; i < length; i++) {
+        arr.push((Math.random()
+                     * 100)
+                     .toFixed(0));
+    }
+
+    return arr;
+  } 
+
+  componentDidMount() {
+    this.setState(prevState => {
+      return {
+        ...this.state,
+        array: this.randomize(prevState.arrayLength)
+      }
+    })
+  }
+
   render() {
     return (
       <div className="App">
