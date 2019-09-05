@@ -61,7 +61,7 @@ class App extends React.Component {
                       setAlgorithm={this.setAlgorithm}
                       sortArray={this.sortArray}
         />
-        <Graph data={this.state.array}/>
+        <Graph data={this.state.array} size={[300, '100%']}/>
       </div>
     );
   }
