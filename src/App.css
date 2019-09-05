@@ -1,0 +1,22 @@
+.control-panel {
+    background-color: black;
+}
+
+.control-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+input {
+    color: white;
+    padding-left: 10px;
+}
+
+.select-wrapper input.select-dropdown {
+    padding-left: 25px;
+}
+
+.dropdown-content  {
+    top: -50px;
+}

@@ -1,9 +1,7 @@
 import React from 'react';
 
-import Header from './components/Header';
 import ControlPanel from './components/ControlPanel';
 import Graph from './components/Graph';
-
 import Algorithms from './algorithms';
 
 class App extends React.Component {
@@ -57,14 +55,13 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header />
         <ControlPanel config={this.state} 
                       setArrayValues={this.setArrayValues}
                       setArrayLength={this.setArrayLength}
                       setAlgorithm={this.setAlgorithm}
                       sortArray={this.sortArray}
         />
-        <Graph />
+        <Graph data={this.state.array}/>
       </div>
     );
   }

@@ -1,8 +1,12 @@
-import { isGenericTypeAnnotation } from "@babel/types";
-
 const Aglorithms = {
     merge: array => {
         return merge(array);
+    },
+
+    quick: array => {
+        console.log('quick');
+
+        return quickSort(array, 0, array.length-1);
     },
 
     insertion: arr => {
@@ -36,12 +40,6 @@ const Aglorithms = {
 
         return array;
     },
-
-    quick: array => {
-        console.log('quick');
-
-        return quickSort(array, 0, array.length-1);
-    }
 }
 
 /*

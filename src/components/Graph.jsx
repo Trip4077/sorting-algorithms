@@ -3,7 +3,9 @@ import React from 'react';
 const Graph = props => {
     return(
         <div>
-            Graph
+            {
+                props.data.map(num => <span>{num}, </span>)
+            }
         </div>
     )
 }
