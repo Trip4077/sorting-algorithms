@@ -38,7 +38,7 @@ const ControlPanel = props => {
                         <option value="60">60 Values</option>
                         <option value="70">70 Values</option>
                         <option value="80">80 Values</option>
-                        <option value="90">90 Values</option>\
+                        <option value="90">90 Values</option>
                         <option value="100">100 Values</option>
                     </select>
                     <label>Array Length Select</label>

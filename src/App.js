@@ -42,6 +42,10 @@ class App extends React.Component {
     this.setState({ array: this.randomize(this.state.arrayLength) })
   }
 
+  updateArrayValues = update => {
+    this.setState({ array: update });
+  }
+
   sortArray = () => {
     const array = Algorithms[this.state.algorithm](this.state.array);
 
