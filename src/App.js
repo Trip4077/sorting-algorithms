@@ -10,7 +10,7 @@ class App extends React.Component {
 
     this.state = {
       algorithm: 'merge',
-      array: [],
+      array: [ 1, 2 ],
       arrayLength: 10,
     }
   }
@@ -52,10 +52,6 @@ class App extends React.Component {
     this.setState({ array });
   }
 
-  componentDidMount() {
-    this.setArrayValues();
-  }
-
   render() {
     return (
       <div className="App">
@@ -65,7 +61,7 @@ class App extends React.Component {
                       setAlgorithm={this.setAlgorithm}
                       sortArray={this.sortArray}
         />
-        <Graph data={this.state.array} size={[300, '100%']}/>
+        <Graph data={this.state.array} type={this.state.algorithm}/>
       </div>
     );
   }

@@ -1,71 +1,89 @@
 import React, { Component } from 'react';
-
-import { scaleLinear } from 'd3-scale';
-import { max } from 'd3-array';
-import { select } from 'd3-selection';
+import Chart from 'react-apexcharts';
 
 class Graph extends Component {
-   constructor(props){
-      super(props)
-      this.createBarChart = this.createBarChart.bind(this)
-   }
-   componentDidMount() {
-      this.createBarChart()
-   }
-   componentDidUpdate() {
-      this.createBarChart()
-   }
-   createBarChart() {
-      const node = this.node
-      const dataMax = max(this.props.data)
+    constructor(props) {
+        super(props)
 
-      const yScale = scaleLinear()
-                        .domain([0, dataMax])
-                        .range([0, this.props.size[1]])
+        this.state = {
+            options: {
+                chart: {
+                    background: '#f4f4f4',
+                    foreColor: '#333'
+                },
+                yaxis: this.props.data,
+                plotOptions: {
+                    bar: {
+                        horizontal: false
+                    }
+                },
+                fill: {
+                    colors: ['#f44336']
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                title: {
+                    text: `${this.props.type} Sort`,
+                    align: 'center',
+                    margin: 20,
+                    offsetY: 20
+                }
+            },
+            series: [
+                {
+                    name: `${this.props.type} Sort`,
+                    data: this.props.data
+                }
+            ]
+        }
+    }
 
-        select(node)
-            .selectAll('rect')
-            .data(this.props.data)
-            .enter()
-            .append("g")
-            .append('rect')
+    componentDidMount() {
+        this.setState(
+            { 
+                options: {
+                    ...this.state.options,
+                    yaxis: this.props.data
+                },
+                series: [
+                    ...this.state.series,
+                    {
+                        data: this.props.data
+                    }
+                ]
+            });
+    }
 
-        select(node)
-            .selectAll("g")
+    componentDidUpdate() {
+        // this.setState(
+        //     { 
+        //         options: {
+        //             ...this.state.options,
+        //             yaxis: this.props.data
+        //         },
+        //         series: [
+        //             ...this.state.series,
+        //             {
+        //                 data: this.props.data
+        //             }
+        //         ]
+        // });
+    }
 
-        select(node).selectAll("g")
-            .append('text')
-            .text(d => d)
-            .attr('fill', 'green')
-            .attr("font-size", "50px")
-        
-        select(node)
-            .selectAll('rect')
-            .data(this.props.data)
-            .exit()
-            .remove()
-        
-        select(node)
-            .selectAll('rect')
-            .data(this.props.data)
-            .style('fill', '#fe9922')
-            .attr('x', (d,i) => i * 25)
-            .attr('y', d => this.props.size[1] - yScale(d))
-            .attr('height', d => yScale(d))
-            .attr('width', 25)
-   }
-render() {
-      return(
-          <div>
-              <svg ref={node => this.node = node}
-                    width={500} height={500}>
-                    </svg>
-
-                <div className='number-container'>
-                    {this.props.data.map(d => <p>{d}</p>)}
-                </div>
-          </div>
-      )
-   }
+    render() {
+        return(
+            <React.Fragment>
+                <Chart 
+                    options={this.state.options}
+                    series={this.state.series}
+                    type='bar'
+                    height= '450'
+                    width='100%'
+                />
+            </React.Fragment>
+        );
+    }
 }
-export default Graph;
+
+export default Graph
